@@ -1,0 +1,148 @@
+:root {
+	--planet: 200px;
+	--orbit1: 400px;
+  --orbit2: 350px;
+}
+html {
+	background: radial-gradient(circle, black, hsl(220, 83%, 12%));
+}
+#container {
+	width: 100%;
+	height: 100vh;
+}
+.star {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	position: absolute;
+	background: white;
+	transition: box-shadow 300ms, top 500ms ease-in-out, left 1000ms ease;
+}
+#star1 {
+	top: 380px;
+	left: 200px;
+}
+#star2 {
+	top: -40px;
+	left: -40px;
+	animation: glowmove 4s infinite ease-out;
+}
+#star3 {
+	top: 160px;
+	left: 260px;
+}
+#star4 {
+	top: 260px;
+	left: 70%;
+}
+#star5 {
+	top: 400px;
+	left: 0px;
+	transform: translate(-50%, -50%);
+}
+#star6 {
+	top: -150px;
+	left: 45%;
+}
+#star7 {
+	top: 50px;
+	left: -140px;
+}
+#star8 {
+  animation: glowmove2 3.1s reverse infinite ease-out;
+}
+.planet {
+	width: var(--planet);
+	height: var(--planet);
+	background: linear-gradient(red, hsl(25, 90%, 45%));
+	border-radius: 50%;
+	position: absolute;
+	top: calc(50vh - var(--planet)/2);
+	left: calc(50% - var(--planet)/2);
+}
+.planet:hover .star {
+	box-shadow: rgba(255, 255, 255, .5) 0 0 20px 20px;
+}
+.planet:hover #star3 {
+	top: -200px;
+	left: -140px;
+}
+.planet:hover #star5 {
+	top: 100px;
+	left: 380px;
+}
+.ring {
+	width: 600px;
+	height: 30px;
+	border: solid 1px white;
+	border-radius: 50%;
+	position: absolute;
+	top: calc(50vh - 2px);
+	left: calc(50% - 300px);
+	transform: rotate(45deg);
+	animation: fatten 3s ease-in-out infinite alternate;
+}
+.ring-front {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+@keyframes glowmove {
+	0% {
+		box-shadow: rgba(255, 255, 255, .5) 0 0 20px 20px;
+		top: calc(var(--planet)/2 - var(--orbit1));
+		left: calc(var(--planet)/2 - var(--orbit1));
+	}
+	25% {
+		top: calc(var(--planet)/2 - var(--orbit1));
+		left: calc(var(--planet)/2 + var(--orbit1));
+	}
+	50% {
+		top: calc(var(--planet)/2 + var(--orbit1));
+		left: calc(var(--planet)/2 + var(--orbit1));
+	}
+	75% {
+		top: calc(var(--planet)/2 + var(--orbit1));
+		left: calc(var(--planet)/2 - var(--orbit1));
+	}
+	100% {
+		box-shadow: rgba(255, 255, 255, .5) 0 0 5px 5px;
+		top: calc(var(--planet)/2 - var(--orbit1));
+		left: calc(var(--planet)/2 - var(--orbit1));
+	}
+}
+
+@keyframes glowmove2 {
+	0% {
+		box-shadow: rgba(255, 255, 255, .5) 0 0 20px 20px;
+		top: calc(var(--planet)/2 - var(--orbit2));
+		left: calc(var(--planet)/2 - var(--orbit2));
+	}
+	25% {
+		top: calc(var(--planet)/2 - var(--orbit2));
+		left: calc(var(--planet)/2 + var(--orbit2));
+	}
+	50% {
+		top: calc(var(--planet)/2 + var(--orbit2));
+		left: calc(var(--planet)/2 + var(--orbit2));
+	}
+	75% {
+		top: calc(var(--planet)/2 + var(--orbit2));
+		left: calc(var(--planet)/2 - var(--orbit2));
+	}
+	100% {
+		box-shadow: rgba(255, 255, 255, .5) 0 0 5px 5px;
+		top: calc(var(--planet)/2 - var(--orbit2));
+		left: calc(var(--planet)/2 - var(--orbit2));
+	}
+}
+
+@keyframes fatten {
+	from {
+		height: 10px;
+	}
+	to {
+		height: 45px;
+	}
+}
